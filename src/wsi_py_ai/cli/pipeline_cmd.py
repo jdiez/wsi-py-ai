@@ -39,6 +39,25 @@ def pipeline_run(
     typer.echo("Pipeline complete.")
 
 
+@pipeline_app.command("prefect")
+def pipeline_prefect(
+    source_dir: str = typer.Argument(..., help="Source directory with WSI files"),
+    study: str = typer.Option(..., "--study", help="Study identifier"),
+    parallel: int = typer.Option(4, "--parallel", help="Number of parallel workers"),
+    pattern: str = typer.Option("*", "--pattern", help="Glob pattern for files"),
+) -> None:
+    """Run pipeline as a Prefect flow with retries and observability."""
+    from wsi_py_ai.orchestration.flows import wsi_pipeline_flow
+
+    result = wsi_pipeline_flow(
+        source_dir=source_dir,
+        study_id=study,
+        pattern=pattern,
+        parallelism=parallel,
+    )
+    typer.echo(f"Pipeline flow complete: {result}")
+
+
 @pipeline_app.command("status")
 def pipeline_status(
     study: str = typer.Option(..., "--study", help="Study identifier"),

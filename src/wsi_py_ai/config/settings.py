@@ -61,6 +61,10 @@ class WSIPipelineConfig(BaseSettings):
     deid_salt_secret: str = ""
     qa_endpoint: str = ""
 
+    # Registry backend selection
+    registry_backend: str = "sqlite"
+    postgres_url: str = ""
+
     # Shared settings
     deid_salt: str = ""
     qa_thresholds_focus: float = 0.7

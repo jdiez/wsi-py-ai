@@ -2268,6 +2268,29 @@ wheels = [
 ]
 
 [[package]]
+name = "openslide-python"
+version = "1.4.6"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pillow" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/74/76/64718cf7c8e297db2c7e5e6a204795d74541f1ba9da7bf5be85155f20d81/openslide_python-1.4.6.tar.gz", hash = "sha256:5df25a68507c7574b219b548f814b088ade8e04c36990c1472813ee16797bfb1", size = 430943, upload-time = "2026-06-08T01:12:39.6Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/92/22/7b5609514102fb3e02e4f8b87a58c1ce2f2b5bb0734462728ffc473f1fa7/openslide_python-1.4.6-cp311-abi3-macosx_10_9_universal2.whl", hash = "sha256:6d58a97324b3c42ef65085329bffa346a30d5607359a82c983faebc54750fc43", size = 33102, upload-time = "2026-06-08T01:12:26.467Z" },
+    { url = "https://files.pythonhosted.org/packages/89/be/7abab64f5dc53af384614f43ee2e5fab2b505cbb6d4c561172457d624eab/openslide_python-1.4.6-cp311-abi3-manylinux1_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:59caee04d657cccc88457148a34a507d492fd4ce9c7bcc16fca7d3bbd0a77fa0", size = 36748, upload-time = "2026-06-08T01:12:27.494Z" },
+    { url = "https://files.pythonhosted.org/packages/49/f2/fb9c87f34a740102ac18748bdc8908f29593878bf9eb5e4f76961f2d875a/openslide_python-1.4.6-cp311-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:dd637eccfc051da0b263a966ff8763f6791abb1c68ca08fc0b29062e91cbe6d1", size = 37306, upload-time = "2026-06-08T01:12:28.574Z" },
+    { url = "https://files.pythonhosted.org/packages/42/95/f49de157f4cf503a9bc2eafcf4a2351fffdeb95fee4c17caf63fb4cda7cf/openslide_python-1.4.6-cp311-abi3-win_amd64.whl", hash = "sha256:0c2655e668e467c6fd8db0147924f9753f053586304f5b775e56019a02adee8f", size = 35278, upload-time = "2026-06-08T01:12:29.73Z" },
+    { url = "https://files.pythonhosted.org/packages/9b/2c/f0c2fabad9355d31a44136b97cc7c0f0f831a55d9a0f5b15f93ade238aba/openslide_python-1.4.6-cp313-cp313t-macosx_10_13_universal2.whl", hash = "sha256:6445abdbd66b680deb98b723cada82535c872cde8941f59b0b341e36c0f406f8", size = 33142, upload-time = "2026-06-08T01:12:30.784Z" },
+    { url = "https://files.pythonhosted.org/packages/79/0d/76131ac22c15f0cd336aa24cd52190f7fd2ff0ee6be1ecf7b9edb085b0de/openslide_python-1.4.6-cp313-cp313t-manylinux1_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:2ea7dd69783651af4e1b2559abce24fc62743d403f9f99fcc4eb21b407f9f716", size = 40633, upload-time = "2026-06-08T01:12:32.002Z" },
+    { url = "https://files.pythonhosted.org/packages/6b/05/e5b8a16aff510e73ca59f918aba38af71b029b1538704bd7690713ea2f22/openslide_python-1.4.6-cp313-cp313t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:f038584c2a47be799782a1c13b9f50a7cdf20cdb0371cf9a5210314898e403cd", size = 41187, upload-time = "2026-06-08T01:12:32.953Z" },
+    { url = "https://files.pythonhosted.org/packages/88/06/9f565ffb5955398fb74c5dc9fb5d7654f39a86f681afb8901c2e262d555f/openslide_python-1.4.6-cp313-cp313t-win_amd64.whl", hash = "sha256:3401cc46dfa6b2cf729027d405d5bccbaf48e5ed2c42fccf6b375fc67f843aa5", size = 35348, upload-time = "2026-06-08T01:12:33.941Z" },
+    { url = "https://files.pythonhosted.org/packages/c1/68/46b466e4dee72f35395db422aa84c2eaaef3d182ca4a58920bf3d530189a/openslide_python-1.4.6-cp314-cp314t-macosx_10_15_universal2.whl", hash = "sha256:443b30f28b81b8d08c3aecdf4024ff99c96fb7627f49f237db50f899c3967e20", size = 33157, upload-time = "2026-06-08T01:12:35.05Z" },
+    { url = "https://files.pythonhosted.org/packages/0d/6b/cb991a252b3b259e2cd80abbf2798917d10830aac8f02cf12fcabd97e852/openslide_python-1.4.6-cp314-cp314t-manylinux1_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:0641c621ef8d486ed6fa893eee787945729821b4007fbdaabb3eeec216fa6724", size = 40758, upload-time = "2026-06-08T01:12:36.144Z" },
+    { url = "https://files.pythonhosted.org/packages/b2/57/871fd206790fd350038625cafe38960bfbbb79d1ce9d05b73fd299ca8af7/openslide_python-1.4.6-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:41bd70bd3c0850cbd0dc2598c9fcac2e9657724ee860048950d5f147ac4eff2a", size = 41318, upload-time = "2026-06-08T01:12:37.452Z" },
+    { url = "https://files.pythonhosted.org/packages/b9/0f/8229aeff5b69cbd343b716399301083d78162fe34e6faaad339e11cd4500/openslide_python-1.4.6-cp314-cp314t-win_amd64.whl", hash = "sha256:9b45a70ae300b70a0aa7e8c438f16cdb899a720f09729fb8cc1e4df0321f88de", size = 35586, upload-time = "2026-06-08T01:12:38.544Z" },
+]
+
+[[package]]
 name = "opentelemetry-api"
 version = "1.43.0"
 source = { registry = "https://pypi.org/simple" }
@@ -4545,7 +4568,7 @@ wheels = [
 
 [[package]]
 name = "wsi-py-ai"
-version = "0.1.0"
+version = "0.2.0"
 source = { editable = "." }
 dependencies = [
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
@@ -4566,6 +4589,7 @@ all = [
     { name = "google-cloud-bigquery" },
     { name = "google-cloud-pubsub" },
     { name = "google-cloud-storage" },
+    { name = "openslide-python" },
     { name = "pillow" },
     { name = "prefect" },
     { name = "psycopg2-binary" },
@@ -4581,6 +4605,7 @@ gcp = [
     { name = "google-cloud-storage" },
 ]
 ml = [
+    { name = "openslide-python" },
     { name = "pillow" },
     { name = "scikit-image" },
     { name = "torch" },
@@ -4617,6 +4642,7 @@ requires-dist = [
     { name = "google-cloud-pubsub", marker = "extra == 'gcp'", specifier = ">=2.19" },
     { name = "google-cloud-storage", marker = "extra == 'gcp'", specifier = ">=2.14" },
     { name = "numpy", specifier = ">=1.26" },
+    { name = "openslide-python", marker = "extra == 'ml'", specifier = ">=1.3" },
     { name = "pillow", marker = "extra == 'ml'", specifier = ">=10.2" },
     { name = "prefect", marker = "extra == 'orchestration-prefect'", specifier = ">=3.0" },
     { name = "psycopg2-binary", marker = "extra == 'postgres'", specifier = ">=2.9" },

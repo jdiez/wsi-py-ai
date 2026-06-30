@@ -33,9 +33,17 @@ def get_backends(config: WSIPipelineConfig) -> dict[str, Any]:
         )
 
         base_dir = Path(config.local_base_dir)
+
+        if config.registry_backend == "postgres":
+            from wsi_py_ai.backends.postgres import PostgresRegistryBackend
+
+            registry: Any = PostgresRegistryBackend(config.postgres_url)
+        else:
+            registry = SQLiteRegistryBackend(Path(config.local_db))
+
         return {
             "storage": LocalStorageBackend(base_dir),
-            "registry": SQLiteRegistryBackend(Path(config.local_db)),
+            "registry": registry,
             "compute": LocalComputeBackend(),
             "inference": LocalInferenceBackend(Path(config.local_models_dir), config.local_device),
         }

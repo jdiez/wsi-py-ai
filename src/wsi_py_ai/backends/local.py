@@ -215,16 +215,36 @@ class LocalInferenceBackend(InferenceBackend):
         self.device = device
 
     def predict(self, model_name: str, inputs: list[Any]) -> list[Any]:
-        """Run local model prediction.
+        """Run local model prediction using PyTorch.
+
+        Loads a TorchScript model from models_dir/{model_name}.pt and runs
+        inference on the provided inputs.
 
         Args:
             model_name: Name of the model (expects {model_name}.pt in models_dir).
-            inputs: List of inputs.
+            inputs: List of inputs (numpy arrays or tensors).
 
         Returns:
-            List of prediction outputs.
-
-        Raises:
-            NotImplementedError: Torch-based inference requires torch optional dep.
+            List of prediction outputs as numpy arrays.
         """
-        raise NotImplementedError("Local inference requires torch. Install with: uv add torch torchvision")
+        import torch
+
+        model_path = self.models_dir / f"{model_name}.pt"
+        if not model_path.exists():
+            msg = f"Model not found: {model_path}"
+            raise FileNotFoundError(msg)
+
+        model = torch.jit.load(str(model_path), map_location=self.device)  # nosec B614 - loading trusted local model files
+        model.eval()
+
+        results: list[Any] = []
+        with torch.no_grad():
+            for inp in inputs:
+                tensor = torch.as_tensor(inp, device=self.device)
+                if tensor.dim() == 3:
+                    tensor = tensor.unsqueeze(0)
+                output = model(tensor)
+                results.append(output.cpu().numpy())
+
+        logger.info("inference.completed", model=model_name, count=len(inputs), device=self.device)
+        return results

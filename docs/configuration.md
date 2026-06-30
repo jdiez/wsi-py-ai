@@ -37,6 +37,17 @@ export WSI_REGISTRY_DATASET=wsi_registry
 export WSI_QA_ENDPOINT=projects/my-project/locations/us-central1/endpoints/12345
 ```
 
+## PostgreSQL Registry
+
+Use PostgreSQL instead of SQLite for multi-user production deployments:
+
+```bash
+export WSI_REGISTRY_BACKEND=postgres
+export WSI_POSTGRES_URL=postgresql://user:pass@host:5432/wsi_db
+```
+
+Requires: `pip install wsi-py-ai[postgres]`
+
 ## QA Thresholds
 
 Quality assessment thresholds are configurable:
