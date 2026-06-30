@@ -1,0 +1,22 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+    "name": "wsi-py-ai",
+    "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
+    "runArgs": [
+        "--userns=keep-id"
+    ],
+    "features": {},
+    "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": ["ms-python.python", "editorconfig.editorconfig", "charliermarsh.ruff"],
+            "settings": {
+                "python.testing.pytestArgs": ["tests"],
+                "python.testing.unittestEnabled": false,
+                "python.testing.pytestEnabled": true,
+                "python.defaultInterpreterPath": "/workspaces/wsi-py-ai/.venv/bin/python",
+                "python.testing.pytestPath": "/workspaces/wsi-py-ai/.venv/bin/pytest"
+            }
+        }
+    }
+}

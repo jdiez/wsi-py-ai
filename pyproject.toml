@@ -1,0 +1,211 @@
+[project]
+name = "wsi-py-ai"
+version = "0.1.0"
+description = "WSI Processing Pipeline — ingestion, de-identification, registry, DataLoader optimization, and automated QA for whole slide images. Dual-mode: local on-premise and GCP cloud."
+authors = [{ name = "Javier Díez Pérez", email = "javier@example.com" }]
+readme = "README.md"
+keywords = ["python", "wsi", "pathology", "medical-imaging", "gcp", "deep-learning"]
+requires-python = ">=3.11,<4.0"
+classifiers = [
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "structlog>=24.4.0",
+    "pydantic>=2.6",
+    "pydantic-settings>=2.1",
+    "typer>=0.12",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+gcp = [
+    "google-cloud-storage>=2.14",
+    "google-cloud-bigquery>=3.17",
+    "google-cloud-aiplatform>=1.43",
+    "google-cloud-pubsub>=2.19",
+]
+ml = [
+    "torch>=2.2",
+    "torchvision>=0.17",
+    "Pillow>=10.2",
+    "scikit-image>=0.22",
+]
+orchestration-prefect = [
+    "prefect>=3.0",
+]
+postgres = [
+    "psycopg2-binary>=2.9",
+    "sqlalchemy>=2.0",
+]
+agentic = [
+    "agno>=2.5",
+]
+all = [
+    "wsi-py-ai[gcp,ml,postgres,orchestration-prefect,agentic]",
+]
+
+[project.scripts]
+wsi = "wsi_py_ai.cli:app"
+
+[project.urls]
+Homepage = "https://jdiez.github.io/wsi-py-ai/"
+Repository = "https://github.com/jdiez/wsi-py-ai"
+Documentation = "https://jdiez.github.io/wsi-py-ai/"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.0",
+    "pre-commit>=4.0.0",
+    "tox-uv>=1.33.0",
+    "deptry>=0.25.0",
+    "mypy>=1.19.0",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.0",
+    "bandit[toml]>=1.8.0",
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.7.0",
+    "mkdocstrings[python]>=1.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/wsi_py_ai"]
+
+[tool.mypy]
+files = [
+    "src",
+]
+strict = true
+plugins = ["pydantic.mypy"]
+disallow_untyped_defs = true
+disallow_any_unimported = false
+no_implicit_optional = true
+check_untyped_defs = true
+warn_return_any = true
+warn_unused_ignores = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = [
+    "google.*",
+    "torch.*",
+    "torchvision.*",
+    "openslide.*",
+    "PIL.*",
+    "skimage.*",
+    "apache_beam.*",
+    "agno.*",
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "wsi_py_ai.tools.*"
+disallow_untyped_decorators = false
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+fix = true
+
+[tool.ruff.lint]
+select = [
+    # pyflakes
+    "F",
+    # pycodestyle
+    "E", "W",
+    # isort
+    "I",
+    # pep8-naming
+    "N",
+    # pydocstyle (Google convention)
+    "D",
+    # pyupgrade
+    "UP",
+    # flake8-2020
+    "YTT",
+    # flake8-bandit
+    "S",
+    # flake8-bugbear
+    "B",
+    # flake8-builtins
+    "A",
+    # flake8-comprehensions
+    "C4",
+    # flake8-debugger
+    "T10",
+    # flake8-simplify
+    "SIM",
+    # flake8-pytest-style
+    "PT",
+    # flake8-return
+    "RET",
+    # mccabe
+    "C90",
+    # pygrep-hooks
+    "PGH",
+    # ruff-specific
+    "RUF",
+    # tryceratops
+    "TRY",
+]
+ignore = [
+    # LineTooLong (formatter handles this)
+    "E501",
+    # DoNotAssignLambda
+    "E731",
+    # Missing docstring in public module (too noisy for new projects)
+    "D100",
+    # Missing docstring in __init__
+    "D104",
+    # First line should be in imperative mood
+    "D401",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "D"]
+
+[tool.ruff.format]
+preview = true
+
+[tool.bandit]
+exclude_dirs = [".venv", "venv", "build", "dist"]
+skips = ["B101"]
+
+[tool.bandit.assert_used]
+skips = ["*/tests/*"]
+
+[tool.deptry]
+ignore = ["DEP002"]
+pep621_dev_dependency_groups = ["dev"]
+
+[tool.coverage.report]
+skip_empty = true
+
+[tool.coverage.run]
+branch = true
+source = [
+    "src",
+]

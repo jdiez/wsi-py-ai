@@ -1,0 +1,59 @@
+site_name: wsi-py-ai
+repo_url: https://github.com/jdiez/wsi-py-ai
+site_url: https://jdiez.github.io/wsi-py-ai
+site_description: "WSI Processing Pipeline — ingestion, de-identification, registry, DataLoader optimization, and automated QA for whole slide images. Dual-mode: local on-premise and GCP cloud."
+site_author: Javier Díez Pérez
+edit_uri: edit/main/docs/
+repo_name: jdiez/wsi-py-ai
+copyright: Maintained by <a href="https://jdiez.com">jdiez</a>.
+
+nav:
+  - Home: index.md
+  - Pipeline Guide: pipeline.md
+  - Multi-Agent System: agents.md
+  - Configuration: configuration.md
+  - API Reference: modules.md
+  - Development: development.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - "src/wsi_py_ai"
+
+theme:
+  name: material
+  feature:
+    tabs: true
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jdiez/wsi-py-ai
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/wsi-py-ai
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
